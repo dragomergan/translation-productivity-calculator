@@ -80,6 +80,14 @@
   border-radius: 4px;
   padding: 8px 16px;
 }
+.btn-bug {
+  color: white;
+  background-color: red;
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  float: right;
+}
 
 
 /* Additional styles as needed */
