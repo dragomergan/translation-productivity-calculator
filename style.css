@@ -1,0 +1,85 @@
+/* style.css */
+
+/* Table Styling */
+.table-container {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid black; /* Add border to the container */
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.table-header-item {
+  flex: 1;
+  padding: 8px;
+  text-align: left;
+  border-right: 1px solid black; /* Add border between header items */
+}
+
+.table-body {
+  padding: 8px;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 8px;
+  text-align: left;
+  border-right: 1px solid black; /* Add border between cells */
+}
+
+.editable-cell {
+  white-space: pre-wrap; /* Allow text wrapping and preserve line breaks */
+}
+/* Table Styling */
+#dataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#dataTable th,
+#dataTable td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black;
+}
+.btn-info {
+  color: white;
+  background-color: #04AA6D;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+.btn-info1 {
+  color: white;
+  background-color: #04AA6D;
+  border: 2px solid #04AA6D; /* Green */
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+.clear-btn {
+  background-color: white;
+  color: red;
+  border: 2px solid red; /* Green */
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+.start-btn {
+  background-color: white;
+  color: green;
+  border: 2px solid #04AA6D; /* Green */
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+
+/* Additional styles as needed */
