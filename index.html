@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Translation Productivity Meter</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+<body>
+  <h2>Welcome to the Translation Productivity Meter</h2>
+  <p>
+    The project has been developed by <a href="https://www.linkedin.com/in/hmergan/" target="_blank">Huseyin Mergan</a> for his TR48A: Translation Tools class at <a href="https://transint.bogazici.edu.tr/" target="_blank">Bogazici University Department of Translation and Interpreting Studies</a>.
+  </p>  
+   <h3>Instructions</h3>
+    <h4>Step 1: Preparing the Translations</h4>
+    <p>
+      You can upload an Excel file and ask your users either to post-edit or
+      translate from scratch. Follow these steps to prepare the Excel file:
+    </p>
+    <ul>
+      <li>
+        Prepare the translation in an Excel file in XLSX format with Source text
+        in column B.
+      </li>
+      <li>Reserve column A for any meta info.</li>
+      <li>
+        Add the first version of the translation (or raw machine translation) in
+        column C if you want it post-edited or reviewed.
+      </li>
+      <li>Save the file as XLSX.</li>
+    </ul>
+    <p>
+      Here you can find a
+      <a
+        href="https://drive.google.com/file/d/1UksWJG2oS5K20FjhiHssX2jGR7cj6g2M/view?usp=sharing"
+        target="_blank"
+        >sample file</a
+      >.
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+<h2>Example Table</h2>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>English</th>
+    <th>Raw</th>
+  </tr>
+  <tr>
+    <td>FPE</td>
+    <td>C# and .NET, the technologies underlying Unity scripting, have continued to receive updates since Microsoft originally released them in 2002</td>
+    <td>Unity komut dosyalarının temelini oluşturan teknolojiler olan C # ve .NET, Microsoft bunları ilk olarak 2002'de yayınladığından beri güncellemeleri almaya devam etti.</td>
+  </tr>
+  <tr>
+    <td>Translation</td>
+    <td>But Unity developers may not be aware of the steady stream of new features added to the C# language and .NET Framework</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>LPE</td>
+    <td>That's because before Unity 2017.1, Unity has been using a .NET 3.5 equivalent scripting runtime, missing years of updates.</td>
+    <td>Bunun nedeni, Unity 2017.1'den önce, Unity'nin .NET 3.5'e eşdeğer bir komut dosyası çalıştırma zamanı kullanması ve yıllardır süren güncellemeleri kaçırmasıdır.</td>
+  </tr>
+  </table>
+
+
+  
+  
+  
+  <h4>Step 2: Importing Translations</h4>
+  
+  <b>Note:</b> Please note that uploaded translations and final outputs are not saved into our server. Web app doesn't record any data from your end.  
+    <ul>
+      <li>Click <b>Import Translation</b> button below to upload a file.</li>
+      <li>Select the file in the dialogue window.</li>
+      <li>
+        Confirm the selected file by clicking OK. Note that you can only import
+        one file at once.
+      </li>
+      <li>Congratulations, all the translations are imported.</li>
+    </ul>
+
+    <h4>Step 3: Editing Translations</h4>
+    <p>
+      Now that you have imported the translations, you can start translating
+      and/or editing text.
+    </p>
+    <ul>
+      <li>Translations are listed in a table.</li>
+      <li>
+        If column C is populated, the first version column is also prefilled.
+      </li>
+      <li>In this case, you can post-edit/review the translation.</li>
+      <li>
+        Wherever column C is empty in the Excel, the first version column is
+        filled with <i>"undefined"</i>.
+      </li>
+      <li>
+        To edit a translation or translate the source, click "<b>Start</b>"
+        button.
+      </li>
+      <li>You can directly start typing in the first version column.</li>
+      <li>
+        When done with editing, click "<b>Save</b>" and then move to the next
+        row.
+      </li>
+      <li>
+        If you move to the next row before clicking save, it will keep counting
+        the time until you click <b>Save</b>.
+      </li>
+      <li>
+        The time between clicking Start button and Save button is recorded in
+        the Time Spent column.
+      </li>
+      <li>
+        To edit a previous row, click Start again and save your translation.
+      </li>
+      <li>The time spent will be updated.</li>
+      <li>
+        To delete a former translation from the first version column, click
+        "<b>Clear</b>".
+      </li>
+    </ul>
+
+    <h4>Step 4: Downloading the Translation</h4>
+    <p>
+      When done with all the rows, you can download the translation by clicking
+      "<b>Download Table as HTML</b>".
+<p>
+    
+  <label for="fileInput" class="btn btn-info"> Import Translation</label>
+  <input type="file" id="fileInput" accept=".xlsx,.xls" style="display: none"
+onchange="this.nextElementSibling.textContent = this.previousElementSibling.title = this.files[0].name">
+  <div class="table-container">
+    <div class="table-header">
+      <div class="table-header-item">Task Name</div>
+      <div class="table-header-item">Source</div>
+      <div class="table-header-item">First Version</div>
+      <div class="table-header-item">Clear Prepopulation</div>
+      <div class="table-header-item">Actions</div>
+      <div class="table-header-item">Your Version</div>
+      <div class= "table-header-item">Time Spent </div>
+      <div class="table-header-item">Edit Distance</div>
+    </div>
+  
+   <div class="table-body" id="dataBody"></div>
+  </div>
+<br>  
+<button id="downloadButton" class="btn btn-info1">Download Table as HTML</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+  <script src="script.js"></script>
+</p>
+</body>
+</html>
