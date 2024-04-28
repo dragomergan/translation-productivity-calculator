@@ -5,11 +5,37 @@ document.getElementById('fileInput').addEventListener('change', function (e) {
   const file = e.target.files[0];
   const reader = new FileReader();
   reader.onload = function (e) {
+    // get file type
+    const fileType = file.name.split(".")[file.name.split(".").length -1];
     const data = new Uint8Array(e.target.result);
-    const workbook = XLSX.read(data, { type: 'array' });
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
-    textData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    // use different code based on filetype
+    if (fileType.toUpperCase() === "XLSX") {
+      
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheetName = workbook.SheetNames[0];
+      const sheet = workbook.Sheets[sheetName];
+      textData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    } else if (fileType.toUpperCase().includes("XLIFF")) {
+
+      // code for reading xliff content
+      const decoder = new TextDecoder();
+      const fileContent = decoder.decode(e.target.result);
+      
+      const parsedXML = xmlParser(fileContent);
+      const transUnits = parsedXML.querySelectorAll("xliff trans-unit");
+
+      transUnits.forEach (unit => {
+        const sourceUnits = unit.querySelectorAll("source");
+        const targetUnits = unit.querySelectorAll("target");
+        const unitID = unit.getAttribute("id");
+        sourceUnits.forEach((sourceUnit, i) => {
+          textData.push([unitID, sourceUnit.innerHTML, targetUnits[i].innerHTML])
+        })
+        
+      })
+
+    }
+    
     displayTable();
   };
   reader.readAsArrayBuffer(file);
@@ -106,6 +132,13 @@ function displayTable() {
       }
     });
   });
+}
+
+// function to be used for parsing xliff content
+function xmlParser(xmlcontent) {
+	let parser = new DOMParser;
+	let xmldoc = parser.parseFromString(xmlcontent, "text/xml");
+	return xmldoc;
 }
 
 // Function to download table as HTML
